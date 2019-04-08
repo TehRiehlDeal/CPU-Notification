@@ -1,2 +1,3 @@
 credentials.py
 __pychache__/
+*.pyc
