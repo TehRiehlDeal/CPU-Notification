@@ -39,12 +39,13 @@ def getTemp(cmd, startChar, endChar):
     temp = output[startChar:endChar]
     return temp
 
-if (thisPlatform is "Darwin"):
-    cmd = "iStats | grep -E 'CPU temp:'"
-    temp = getTemp(cmd, 24, 29)
-elif (thisPlatform is "Linux"):
+if (thisPlatform is "Linux"):
     cmd = "sensors | grep -E 'Package id 0'"
     temp = getTemp(cmd, 16, 20)
+elif (thisOS is "posix"):
+    cmd = "iStats | grep -E 'CPU temp:'"
+    temp = getTemp(cmd, 24, 29)
+
 elif (thisPlatform is "Windows"):
     #Not Implimented yet
     cmd = ""
