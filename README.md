@@ -21,6 +21,7 @@ sudo sensors-detect
 ```
 sensors
 ```
+# How to use
 - To keep from having to work with cronjobs you can run the script in a 'screen'
 ```
 sudo apt install screen
@@ -30,7 +31,22 @@ sudo apt install screen
 screen -S screenName
 ```
 This will open up a seperate terminal window that will always be running in the background.
-- From there change directories to where the script is located and run it will python3
+- First clone the repo to where you want the script located
+```
+git clone https://github.com/TehRiehlDeal/CPU-Notification.git
+```
+- From there change directories to where the script is located
+```
+cd /CPU-Notification
+```
+- Create a credentials.py file and put your email address and password into the file
+```
+touch credentials.py
+```
+- Then run the script and it should work
+```
+python3 main.py
+```
 - To exit a screen hit CTRL+a then press d
 - To get back into the screen you created run
 ```
