@@ -1,5 +1,6 @@
 import subprocess
-import smtplib
+import smtplib, imaplib
+import email
 from email.message import EmailMessage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -38,6 +39,23 @@ def getTemp(cmd, startChar, endChar):
     output = runCommand(cmd)
     temp = output[startChar:endChar]
     return temp
+
+def readEmails():
+    server = imaplib.IMAP4_SSL('theriehldeal.com', 993)
+    server.login(credentials.username, credentials.password)
+    server.select('inbox')
+
+    result, data = server.search(None, 'ALL')
+    mail_ids = data[0]
+
+    id_list = mail_ids.split()
+    first_email_id = int(id_list[0])
+    latest_email_id = int(id_list[-1])
+
+    for i in range(latest_email_id, first_email_id, -1):
+        result, data = server.fetch(str(i), '(RFC822)')
+
+        print(data)                
 
 if (thisPlatform == "Darwin"):
     cmd = "iStats | grep -E 'CPU temp:'"
