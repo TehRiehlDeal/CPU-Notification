@@ -7,7 +7,7 @@ If it does reach higher than the target temperature it will send the owner an em
 the machine is overheating and advise them to take action
 
 # Prerequisites
-
+### Ubuntu Linux
 If you are running on an Ubuntu machine you will have to install a few things for this script to work.
 - You'll have to install lm-sensors and hddtemp
 ```
@@ -20,6 +20,16 @@ sudo sensors-detect
 - Finally to check that everything worked you can just run the sensors command
 ```
 sensors
+```
+### Mac OS
+If you are running on Mac OS you'll need a couple things to get this script to work.
+- Make sure you have ruby installed on your machine
+```
+brew install ruby
+```
+- Then you want to install iStats
+```
+gem install iStats
 ```
 # How to use
 - To keep from having to work with cronjobs you can run the script in a 'screen'
