@@ -5,6 +5,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import time
 import datetime
+import ./credentials/credentials
 
 targetTemp = 80.0
 
@@ -19,7 +20,7 @@ def runCommand(cmd):
 
 def sendEmail(temp, targetTemp):
     server = smtplib.SMTP_SSL('theriehldeal.com', 465)
-    server.login()
+    server.login(username, password)
     msg = MIMEMultipart()
 
     msg['From'] = 'kevin@theriehldeal.com'
