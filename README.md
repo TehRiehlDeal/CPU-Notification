@@ -6,6 +6,36 @@ of the system and make sure it doesn't go over a target temperature that can be 
 If it does reach higher than the target temperature it will send the owner an email that
 the machine is overheating and advise them to take action
 
+# Prerequisites
+
+If you are running on an Ubuntu machine you will have to install a few things for this script to work.
+- You'll have to install lm-sensors and hddtemp
+```
+sudo apt install lm-sensors hddtemp
+```
+- Next you'll want to run the sensors-detect command to have it detect all your devices
+```
+sudo sensors-detect
+```
+- Finally to check that everything worked you can just run the sensors command
+```
+sensors
+```
+- To keep from having to work with cronjobs you can run the script in a 'screen'
+```
+sudo apt install screen
+```
+- Start a new screen
+```
+screen -S screenName
+```
+This will open up a seperate terminal window that will always be running in the background.
+- From there change directories to where the script is located and run it will python3
+- To exit a screen hit CTRL+a then press d
+- To get back into the screen you created run
+```
+screen -r screenName
+```
 
 # Planned Features
 
