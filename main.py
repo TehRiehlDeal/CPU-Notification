@@ -6,9 +6,12 @@ from email.mime.text import MIMEText
 import time
 import datetime
 import credentials
+import os, platform
 
 targetTemp = 80.0
 
+thisOS = os.name
+thisPlatform = platform.system()
 
 def runCommand(cmd):
     p = subprocess.Popen(
@@ -31,15 +34,24 @@ def sendEmail(temp, targetTemp):
     server.send_message(msg)
     server.quit()
 
+def getTemp(cmd, startChar, endChar):
+    output = runCommand(cmd)
+    temp = output[startChar:endChar]
+    return temp
 
-cmd = "sensors | grep -E 'Package id 0'"
+if (thisOS is "posix"):
+    cmd = "iStats | grep -E 'CPU temp:'"
+    temp = getTemp(cmd, 24, 29)
+elif (thisPlatform is "Linux"):
+    cmd = "sensors | grep -E 'Package id 0'"
+    temp = getTemp(cmd, 16, 20)
+elif (thisPlatform is "Windows"):
+    #Not Implimented yet
+    cmd = ""
 
 emailSent = False
 
 while True:
-    output = runCommand(cmd)
-    temp = output[16:20]
-
     if (float(temp) > targetTemp and emailSent is False):
         print(datetime.datetime.now().strftime("%c \n\t Server Overheating, sending email! " + temp))
         sendEmail(temp, targetTemp)
