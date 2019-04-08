@@ -39,7 +39,7 @@ def getTemp(cmd, startChar, endChar):
     temp = output[startChar:endChar]
     return temp
 
-if (thisOS is "posix"):
+if (thisPlatform is "Darwin"):
     cmd = "iStats | grep -E 'CPU temp:'"
     temp = getTemp(cmd, 24, 29)
 elif (thisPlatform is "Linux"):
