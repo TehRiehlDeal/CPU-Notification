@@ -1,0 +1,8 @@
+[Unit]
+Description=CPUTEMP service at port 57777
+After=multi-user.target
+[Service]
+Type=idle
+ExecStart=/usr/bin/python3 /path/to/project/main.py
+[Install]
+WantedBy=multi-user.target
