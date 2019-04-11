@@ -33,7 +33,7 @@ gem install iStats
 ```
 # How to use
 
-###### Screen
+### Screen
 - To keep from having to work with cronjobs you can run the script in a 'screen'
 ```
 sudo apt install screen
@@ -65,7 +65,7 @@ python3 main.py
 screen -r screenName
 ```
 
-###### Make a system service
+### Make it a system service
 * I have provided a service unit file, what you need to do is edit it so that it has the correct path to the main.py file.
 * Then you will have the file to /lib/systemd/system/pycputemp.service
 ```
