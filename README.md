@@ -33,7 +33,7 @@ gem install iStats
 ```
 # How to use
 
-### Screen
+### Using screen
 - To keep from having to work with cronjobs you can run the script in a 'screen'
 ```
 sudo apt install screen
