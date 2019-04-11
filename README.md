@@ -66,8 +66,8 @@ screen -r screenName
 ```
 
 ### Make it a system service
-* I have provided a service unit file, what you need to do is edit it so that it has the correct path to the main.py file.
-* Then you will have the file to /lib/systemd/system/pycputemp.service
+I have provided a service unit file, what you need to do is edit it so that it has the correct path to the main.py file.
+* Then you will have to move the file to /lib/systemd/system/pycputemp.service
 ```
 sudo cp pycputemp.service /lib/systemd/system/pycputemp.service
 ```
