@@ -32,6 +32,8 @@ brew install ruby
 gem install iStats
 ```
 # How to use
+
+###### Screen
 - To keep from having to work with cronjobs you can run the script in a 'screen'
 ```
 sudo apt install screen
@@ -63,6 +65,33 @@ python3 main.py
 screen -r screenName
 ```
 
+###### Make a system service
+* I have provided a service unit file, what you need to do is edit it so that it has the correct path to the main.py file.
+* Then you will have the file to /lib/systemd/system/pycputemp.service
+```
+sudo cp pycputemp.service /lib/systemd/system/pycputemp.service
+```
+* Set the file permissions correctly
+```
+sudo chmod 644 /lib/systemd/system/pycputemp.service
+```
+* Reload the systemd
+```
+sudo systemctl daemon-reload
+```
+* Enable the service so it runs at boot
+```
+sudo systemctl enable pycputemp.service
+```
+This will set it up to run at boot, if it throws any errors then something is wrong with the unit file
+* Reboot your system
+```
+sudo reboot
+```
+You can check to make sure the service is running as intended by running the following command
+```
+sudo systemctl status pycputemp.service
+```
 # Planned Features
 
 Eventually I want to add the ability for it to read emails so that the user can 
